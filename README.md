@@ -21,7 +21,7 @@ This project is able to solve each and every one of these problems, but some may
 - Identification of stolen vehicles.
 
 # The repository
-For a better organization, we'll separate this repository in three main folders:
+For a better organization, we'll separate this repository in tiny projects that have the same architecture. Because of this, each project folder will contain three main directories:
 1. The deep learning model and it's dependencies
 2. The server-side of the application
     1. The backend of the webserver
@@ -40,4 +40,4 @@ Overall, as we need speed for doing real-time analysis and accuracy at the same 
 
 YOLO can be found in AlexeyAB's [GitHub](https://github.com/AlexeyAB). Also, we've used Darknet as our framework - from him as well - because it's faster than Tensorflow. 
 
-~~We have used Django and Flask for our webserver~~ and the majority of the project is built upon Python's foundation. 
+We will use Django for our webserver and the majority of the project is built upon Python's foundation. 
