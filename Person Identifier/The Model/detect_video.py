@@ -20,6 +20,7 @@ from tensorflow.compat.v1 import InteractiveSession
 #########
 #My customization
 import winsound
+import beepy
 ########
 
 flags.DEFINE_string('framework', 'tf', '(tf, tflite, trt')
@@ -136,7 +137,7 @@ def main(_argv):
         allowed_classes = list(class_names.values())
         
         # custom allowed classes (uncomment line below to allow detections for only people)
-        allowed_classes = ['person']
+        #allowed_classes = ['person']
 
         # if crop flag is enabled, crop each detection and save it as new image
         if FLAGS.crop:
@@ -166,7 +167,8 @@ def main(_argv):
                     fps = 1.0 / (time.time() - start_time)
                     print("FPS: %.2f" % fps)
                     last_beep_time = time.time()
-                    winsound.Beep(3000, 100)   
+                    if key == 'person':
+                        winsound.Beep(2000, 80)   
             image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, counted_classes, allowed_classes=allowed_classes, read_plate=FLAGS.plate)
         else:
             image = utils.draw_bbox(frame, pred_bbox, FLAGS.info, allowed_classes=allowed_classes, read_plate=FLAGS.plate)
