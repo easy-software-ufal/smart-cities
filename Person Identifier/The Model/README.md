@@ -3,8 +3,6 @@
 
 A wide range of custom functions for YOLOv4, YOLOv4-tiny, YOLOv3, and YOLOv3-tiny implemented in TensorFlow, TFLite and TensorRT.
 
-DISCLAIMER: This repository is very similar to my repository: [tensorflow-yolov4-tflite](https://github.com/theAIGuysCode/tensorflow-yolov4-tflite). I created this repository to explore coding custom functions to be implemented with YOLOv4, and they may worsen the overal speed of the application and make it not optimized in respect to time complexity. So if you want to run the most optimal YOLOv4 code with TensorFlow than head over to my other repository. This one is to explore cool customizations and applications that can be created using YOLOv4!
-
 ### Demo of Object Counter Custom Function in Action!
 <p align="center"><img src="data/helpers/object_counter.gif"\></p>
 
@@ -15,9 +13,10 @@ DISCLAIMER: This repository is very similar to my repository: [tensorflow-yolov4
 * [x] [License Plate Recognition Using Tesseract OCR](#license)
 * [x] [Apply Tesseract OCR to Detections to Extract Text](#ocr)
 
-If there is a custom function you want to see created then create an issue in the issues tab and suggest it! If enough people suggest the same custom function I will add it quickly!
+
 
 ## Getting Started
+1. Download Anaconda Conda Individual Edition at https://www.anaconda.com/products/individual
 ### Conda (Recommended)
 
 ```bash
@@ -53,9 +52,7 @@ If you want to use yolov4-tiny.weights, a smaller model that is faster at runnin
 ## Using Custom Trained YOLOv4 Weights
 <strong>Learn How To Train Custom YOLOv4 Weights here: https://www.youtube.com/watch?v=mmj3nxGT2YQ </strong>
 
-<strong>Watch me Walk-Through using Custom Model in TensorFlow :https://www.youtube.com/watch?v=nOIVxi5yurE </strong>
-
-USE MY LICENSE PLATE TRAINED CUSTOM WEIGHTS: https://drive.google.com/file/d/1EUPtbtdF0bjRtNjGv436vDY28EN5DXDH/view?usp=sharing
+LICENSE PLATE TRAINED CUSTOM WEIGHTS: https://drive.google.com/file/d/1EUPtbtdF0bjRtNjGv436vDY28EN5DXDH/view?usp=sharing
 
 Copy and paste your custom .weights file into the 'data' folder and copy and paste your custom .names into the 'data/classes/' folder.
 
@@ -119,12 +116,12 @@ python detect.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --
 <p align="center"><img src="data/helpers/custom_result.png" width="640"\></p>
 
 ## Custom Functions and Flags
-Here is how to use all the currently supported custom functions and flags that I have created.
+Here is how to use all the currently supported custom functions and flags that have been created.
 
 <a name="counting"/>
 
 ### Counting Objects (total objects or per class)
-I have created a custom function within the file [core/functions.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/core/functions.py) that can be used to count and keep track of the number of objects detected at a given moment within each image or video. It can be used to count total objects found or can count number of objects detected per class.
+This program is one that can be used to count and keep track of the number of objects detected at a given moment within each image or video. It can be used to count total objects found or can count number of objects detected per class.
 
 #### Count Total Objects
 To count total objects all that is needed is to add the custom flag "--count" to your detect.py or detect_video.py command.
@@ -154,9 +151,9 @@ Running the above command will count the number of objects detected per class an
 <a name="info"/>
 
 ### Print Detailed Info About Each Detection (class, confidence, bounding box coordinates)
-I have created a custom flag called <strong>INFO</strong> that can be added to any detect.py or detect_video.py commands in order to print detailed information about each detection made by the object detector. To print the detailed information to your command prompt just add the flag `--info` to any of your commands. The information on each detection includes the class, confidence in the detection and the bounding box coordinates of the detection in xmin, ymin, xmax, ymax format.
+A custom flag has been created and called <strong>INFO</strong> so that it can be added to any detect.py or detect_video.py commands in order to print detailed information about each detection made by the object detector. To print the detailed information to your command prompt just add the flag `--info` to any of your commands. The information on each detection includes the class, confidence in the detection and the bounding box coordinates of the detection in xmin, ymin, xmax, ymax format.
 
-If you want to edit what information gets printed you can edit the <strong>draw_bbox</strong> function found within the [core/utils.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/core/utils.py) file. The line that prints the information looks as follows:
+If you want to edit what information gets printed you can edit the <strong>draw_bbox</strong> function found within the [core/utils.py](https://github.com/easy-software-ufal/smart-cities/blob/0faa51791f65b0ec6c6fbb73ba6229fd161b944c/Person%20Identifier/The%20Model/core/utils.py) file. The line that prints the information looks as follows:
 <p align="center"><img src="data/helpers/info_details.PNG" height="50"\></p>
 
 Example of info flag added to command:
@@ -171,7 +168,7 @@ Resulting output within your shell or terminal:
 <a name="crop"/>
 
 ### Crop Detections and Save Them as New Images
-I have created a custom function within the file [core/functions.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/core/functions.py) that can be applied to any detect.py or detect_video.py commands in order to crop the YOLOv4 detections and save them each as their own new image. To crop detections all you need to do is add the `--crop` flag to any command. The resulting cropped images will be saved within the <strong>detections/crop/</strong> folder.
+There is a custom function within the file [core/functions.py](https://github.com/easy-software-ufal/smart-cities/blob/0faa51791f65b0ec6c6fbb73ba6229fd161b944c/Person%20Identifier/The%20Model/core/functions.py) that can be applied to any detect.py or detect_video.py commands in order to crop the YOLOv4 detections and save them each as their own new image. To crop detections all you need to do is add the `--crop` flag to any command. The resulting cropped images will be saved within the <strong>detections/crop/</strong> folder.
   
  Example of crop flag added to command:
 ```
@@ -183,7 +180,7 @@ python detect.py --weights ./checkpoints/yolov4-416 --size 416 --model yolov4 --
 <a name="license"/>
 
 ## License Plate Recognition Using Tesseract OCR
-I have created a custom function to feed Tesseract OCR the bounding box regions of license plates found by my custom YOLOv4 model in order to read and extract the license plate numbers. Thorough preprocessing is done on the license plate in order to correctly extract the license plate number from the image. The function that is in charge of doing the preprocessing and text extraction is called <strong>recognize_plate</strong> and can be found in the file [core/utils.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/core/utils.py).
+There is also a custom function to feed Tesseract OCR the bounding box regions of license plates found by my custom YOLOv4 model in order to read and extract the license plate numbers. Thorough preprocessing is done on the license plate in order to correctly extract the license plate number from the image. The function that is in charge of doing the preprocessing and text extraction is called <strong>recognize_plate</strong> and can be found in the file [core/utils.py](https://github.com/easy-software-ufal/smart-cities/blob/0faa51791f65b0ec6c6fbb73ba6229fd161b944c/Person%20Identifier/The%20Model/core/utils.py).
 
 <strong>Disclaimer: In order to run tesseract OCR you must first download the binary files and set them up on your local machine. Please do so before proceeding or commands will not run as expected!</strong>
 
@@ -191,9 +188,7 @@ Official Tesseract OCR Github Repo: [tesseract-ocr/tessdoc](https://github.com/t
 
 Great Article for How To Install Tesseract on Mac or Linux Machines: [PyImageSearch Article](https://www.pyimagesearch.com/2017/07/03/installing-tesseract-for-ocr/)
 
-For Windows I recommend: [Windows Install](https://github.com/UB-Mannheim/tesseract/wiki)
-
-Once you have Tesseract properly installed you can move onwards. If you don't have a trained YOLOv4 model to detect license plates feel free to use one that I have trained. It is not perfect but it works well. [Download license plate detector model and learn how to save and run it with TensorFlow here](#custom)
+For Windows: [Windows Install](https://github.com/UB-Mannheim/tesseract/wiki)
 
 ### Running License Plate Recognition on Images (video example below)
 The license plate recognition works wonders on images. All you need to do is add the `--plate` flag on top of the command to run the custom YOLOv4 model.
@@ -211,7 +206,7 @@ The output from the above command should print any license plate numbers found t
 You should be able to see the license plate number printed on the screen above the bounding box found by YOLOv4.
 
 ### Behind the Scenes
-This section will highlight the steps I took in order to implement the License Plate Recognition with YOLOv4 and potential areas to be worked on further.
+This section will highlight the steps taken in order to implement the License Plate Recognition with YOLOv4 and potential areas to be worked on further.
 
 This demo will be showing the step-by-step workflow on the following original image.
 <p align="center"><img src="data/images/car2.jpg" width="640"\></p>
@@ -242,24 +237,24 @@ Each letter or number is then just appended together into a string and at the en
 ### Running License Plate Recognition on Video
 Running the license plate recognition straight on video at the same time that YOLOv4 object detections causes a few issues. Tesseract OCR is fairly expensive in terms of time complexity and slows down the processing of the video to a snail's pace. It can still be accomplished by adding the `--plate` command line flag to any detect_video.py commands.
 
-However, I believe the best route to go is to run video detections without the plate flag and instead run them with `--crop` flag which crops the objects found on screen and saves them as new images. [See how it works here](#crop) Once the video is done processing at a higher FPS all the license plate images will be cropped and saved within [detections/crop](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/detections/crop/) folder. I have added an easy script within the repository called [license_plate_recognizer.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/license_plate_recognizer.py) that you can run in order to recognize license plates. Plus this allows you to easily customize the script to further enhance any recognitions. I will be working on linking this functionality automatically in future commits to the repository.
+However, the belived to be the best route to go is to run video detections without the plate flag and instead run them with `--crop` flag which crops the objects found on screen and saves them as new images. [See how it works here](#crop) Once the video is done processing at a higher FPS all the license plate images will be cropped and saved within [detections/crop](https://github.com/easy-software-ufal/smart-cities/tree/main/Person%20Identifier/The%20Model/detections/crop/) folder. An easy script is within the repository and is called [license_plate_recognizer.py](https://github.com/easy-software-ufal/smart-cities/blob/0faa51791f65b0ec6c6fbb73ba6229fd161b944c/Person%20Identifier/The%20Model/license_plate_recognizer.py). You can run it in order to recognize license plates. Plus this allows you to easily customize the script to further enhance any recognitions.
 
 Running License Plate Recognition with detect_video.py is done with the following command.
 ```
 python detect_video.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --video ./data/video/license_plate.mp4 --output ./detections/recognition.avi --plate
 ```
 
-The recommended route I think is more efficient is using this command. Customize the rate at which detections are cropped within the code itself.
+The recommended route believed to be more efficient is using this command. Customize the rate at which detections are cropped within the code itself.
 ```
 python detect_video.py --weights ./checkpoints/custom-416 --size 416 --model yolov4 --video ./data/video/license_plate.mp4 --output ./detections/recognition.avi --crop
 ```
 
-Now play around with [license_plate_recognizer.py](https://github.com/theAIGuysCode/yolov4-custom-functions/blob/master/license_plate_recognizer.py) and have some fun!
+Now play around with [license_plate_recognizer.py](https://github.com/easy-software-ufal/smart-cities/blob/main/Person%20Identifier/The%20Model/license_plate_recognizer.py) and have some fun!
 
 <a name="ocr"/>
 
 ## Running Tesseract OCR on any Detections
-I have also implemented a generic use of Tesseract OCR with YOLOv4. By enabling the flag `--ocr` with any detect.py image command you can search detections for text and extract what is found. Generic preprocessing is applied on the subimage that makes up the inside of the detection bounding box. However, so many lighting or color issues require advanced preprocessing so this function is by no means perfect. You will also need to install tesseract on your local machine prior to running this flag (see links and suggestions in above section)
+There has been  implemented also a generic use of Tesseract OCR with YOLOv4. By enabling the flag `--ocr` with any detect.py image command you can search detections for text and extract what is found. Generic preprocessing is applied on the subimage that makes up the inside of the detection bounding box. However, so many lighting or color issues require advanced preprocessing so this function is by no means perfect. You will also need to install tesseract on your local machine prior to running this flag (see links and suggestions in above section)
 
 Example command (note this image doesn't have text so will not output anything, just meant to show how command is structured):
 ```
@@ -289,7 +284,7 @@ You can find the outputted image(s) showing the detections saved within the 'det
 #### TensorFlow Lite int8 Example
 <p align="center"><img src="data/helpers/result-int8.png" width="640"\></p>
 
-Yolov4 and Yolov4-tiny int8 quantization have some issues. I will try to fix that. You can try Yolov3 and Yolov3-tiny int8 quantization 
+Yolov4 and Yolov4-tiny int8 quantization have some issues. 
 
 ## YOLOv4 Using TensorRT
 Can also implement YOLOv4 using TensorFlow's TensorRT. TensorRT is a high-performance inference optimizer and runtime that can be used to perform inference in lower precision (FP16 and INT8) on GPUs. TensorRT can allow up to 8x higher performance than regular TensorFlow.
@@ -385,5 +380,5 @@ detect_video.py:
 
 ### References  
 
-   Huge shoutout goes to hunglc007 for creating the backbone of this repository:
+   Creators of the backbone of this repository:
   * [tensorflow-yolov4-tflite](https://github.com/hunglc007/tensorflow-yolov4-tflite)
